@@ -8,7 +8,7 @@ import axios from 'axios'
 
 const BuyCreadit = () => {
 
-    const { user, backendUrl, loadCreditsData, token, setShowLogin } = useContext(AppContext);
+    const { user, loadCreditsData, token, setShowLogin } = useContext(AppContext);
 
     const navigate = useNavigate()
 
@@ -21,11 +21,11 @@ const BuyCreadit = () => {
             description: 'Credits Payment',
             order_id: order.id,
             receipt: order.receipt,
-           
+
             handler: async function (response) {
                 console.log(response)
                 try {
-                    const verifyRes = await axios.post(`${backendUrl}/api/user/verify-razor`, {
+                    const verifyRes = await axios.post('https://pixelverse-text-to-image-1.onrender.com/api/user/verify-razor', {
 
                         razorpay_order_id: response.razorpay_order_id,
 
@@ -63,7 +63,7 @@ const BuyCreadit = () => {
                 setShowLogin(true)
             }
 
-            const { data } = await axios.post(backendUrl + '/api/user/pay-razor', { planId }, {
+            const { data } = await axios.post('https://pixelverse-text-to-image-1.onrender.com/api/user/pay-razor', { planId }, {
                 headers: {
                     token
                 }

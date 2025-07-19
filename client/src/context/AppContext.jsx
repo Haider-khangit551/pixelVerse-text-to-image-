@@ -16,7 +16,7 @@ const AppContextProvider = (props) => {
 
 
     //BACKEND URL----->
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    // const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 
     const navigate = useNavigate()
@@ -25,7 +25,7 @@ const AppContextProvider = (props) => {
     //FUNCTION FOR SHOWING THE CREDITS----->
     const loadCreditsData = async () => {
         try {
-            const { data } = await axios.get(backendUrl + '/api/user/credits', {
+            const { data } = await axios.get('https://pixelverse-text-to-image-1.onrender.com/api/user/credits', {
                 headers: {
                     token
                 }
@@ -54,7 +54,7 @@ const AppContextProvider = (props) => {
     //FUNCTION FOR GENERATE IMAGE----->
     const generateImage = async (prompt) => {
         try {
-            const { data } = await axios.post(backendUrl + '/api/image/generate-image', { prompt }, {
+            const { data } = await axios.post('https://pixelverse-text-to-image-1.onrender.com/api/image/generate-image', { prompt }, {
                 headers: {
                     token
                 }
@@ -91,7 +91,7 @@ const AppContextProvider = (props) => {
         setUser,
         showLogin,
         setShowLogin,
-        backendUrl,
+        // backendUrl,
         token,
         setToken,
         credit,

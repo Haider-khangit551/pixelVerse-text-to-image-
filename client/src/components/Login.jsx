@@ -12,14 +12,14 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
 
-    const { setShowLogin, backendUrl, setToken, setUser } = useContext(AppContext);
+    const { setShowLogin, setToken, setUser } = useContext(AppContext);
 
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try {
             if (state === 'Login') {
-                const { data } = await axios.post(backendUrl + '/api/user/login', {
+                const { data } = await axios.post('https://pixelverse-text-to-image-1.onrender.com/api/user/login', {
                     email,
                     password
                 })
@@ -33,7 +33,7 @@ const Login = () => {
                     toast.error(data.message)
                 }
             } else {
-                const { data } = await axios.post(backendUrl + '/api/user/register', {
+                const { data } = await axios.post('https://pixelverse-text-to-image-1.onrender.com/api/user/login/register', {
                     name,
                     email,
                     password
